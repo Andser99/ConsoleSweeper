@@ -126,19 +126,18 @@ namespace Minesweeper
             {
                 for (int j = -1; j <= 1; j++)
                 {
-                    try
+                    if (x + i >= 0 && x + i < MineArr.GetLength(0) && y + j >= 0 && y + j < MineArr.GetLength(1))
                     {
-                        if (MineArr[x+i, y+j].Neighbours == 0 && (MineArr[x + i, y + j].Settings & MineCell.Flags.IsPopped) == 0)
+                        if (MineArr[x + i, y + j].Neighbours == 0 && (MineArr[x + i, y + j].Settings & MineCell.Flags.IsPopped) == 0)
                         {
-                            MineArr[x+i, y+j].Pop();
-                            PopSurrounding(x+i, y+j);
+                            MineArr[x + i, y + j].Pop();
+                            PopSurrounding(x + i, y + j);
                         }
                         else
                         {
-                            MineArr[x+i, y+j].Pop();
+                            MineArr[x + i, y + j].Pop();
                         }
                     }
-                    catch (IndexOutOfRangeException) { }
                 }
             }
         }
